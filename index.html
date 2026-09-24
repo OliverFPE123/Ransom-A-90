@@ -1,1 +1,518 @@
 
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>RANSOM A-90 — Скачать</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background: #0a0000;
+    color: #fff;
+    font-family: 'Consolas', 'Courier New', monospace;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.bg-noise {
+    position: fixed;
+    inset: 0;
+    background:
+        repeating-linear-gradient(0deg,
+            rgba(255,0,0,0.05) 0px,
+            rgba(255,0,0,0.05) 1px,
+            transparent 1px,
+            transparent 3px),
+        radial-gradient(circle at 50% 50%, #1a0000 0%, #000 100%);
+    z-index: -1;
+    animation: bgShift 0.15s infinite;
+}
+
+@keyframes bgShift {
+    0% { transform: translate(0,0); }
+    50% { transform: translate(-1px, 1px); }
+    100% { transform: translate(1px, -1px); }
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+header {
+    text-align: center;
+    padding: 40px 0;
+    border-bottom: 2px solid #cc0000;
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-size: clamp(36px, 8vw, 90px);
+    color: #ff0000;
+    text-shadow:
+        0 0 10px #ff0000,
+        0 0 30px #ff0000,
+        0 0 60px #8b0000,
+        4px 4px 0 #3a0000;
+    letter-spacing: 8px;
+    animation: flicker 3s infinite;
+    font-weight: 900;
+}
+
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    45% { opacity: 1; }
+    48% { opacity: 0.4; }
+    50% { opacity: 1; }
+    78% { opacity: 0.7; }
+    80% { opacity: 1; }
+}
+
+.subtitle {
+    color: #ff6666;
+    margin-top: 15px;
+    font-size: 16px;
+    letter-spacing: 4px;
+}
+
+.preview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+}
+
+.sprite-box {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    border: 3px solid #cc0000;
+    background: #000;
+    box-shadow: 0 0 30px #cc0000, 0 0 60px #3a0000 inset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.sprite-box img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px #ff0000);
+}
+
+.sprite-box.idle img {
+    animation: idlePulse 2s ease-in-out infinite;
+}
+
+@keyframes idlePulse {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px #ff0000); }
+    50% { transform: scale(1.06); filter: drop-shadow(0 0 25px #ff0000); }
+}
+
+.sprite-box.scream img {
+    animation: screamShake 0.25s infinite;
+}
+
+@keyframes screamShake {
+    0%   { transform: translate(0,0) scale(1); }
+    20%  { transform: translate(-3px, 2px) scale(1.03); }
+    40%  { transform: translate(3px, -2px) scale(0.98); }
+    60%  { transform: translate(-2px, -3px) scale(1.04); }
+    80%  { transform: translate(2px, 3px) scale(1.01); }
+    100% { transform: translate(0,0) scale(1); }
+}
+
+.sprite-label {
+    position: absolute;
+    bottom: 8px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 12px;
+    color: #ff6666;
+    letter-spacing: 3px;
+}
+
+.ransom-window {
+    max-width: 800px;
+    margin: 0 auto 60px;
+    background: #cc0000;
+    border: 2px solid #ff0000;
+    box-shadow: 0 0 40px #cc0000;
+    animation: windowShake 0.4s infinite;
+}
+
+@keyframes windowShake {
+    0% { transform: translate(0,0); }
+    50% { transform: translate(-1px, 1px); }
+    100% { transform: translate(1px, -1px); }
+}
+
+.ransom-top {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
+}
+
+.ransom-top img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px #000);
+}
+
+.ransom-top h3 {
+    color: #fff;
+    font-size: 36px;
+    letter-spacing: 2px;
+    line-height: 1.1;
+    text-shadow: 2px 2px 0 #000;
+}
+
+.ransom-warn {
+    background: #000;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-size: 15px;
+    letter-spacing: 1px;
+    line-height: 1.6;
+}
+
+.ransom-warn .red {
+    color: #ff3333;
+    font-weight: bold;
+}
+
+.ransom-bottom {
+    display: flex;
+    padding: 15px 20px;
+    gap: 15px;
+    background: #cc0000;
+}
+
+.gold-box {
+    background: #ffd700;
+    color: #000;
+    padding: 12px 25px;
+    font-size: 28px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.timer-box {
+    background: #000;
+    color: #fff;
+    padding: 12px 25px;
+    font-size: 28px;
+    font-weight: bold;
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.downloads {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.downloads h2 {
+    color: #ff0000;
+    font-size: 28px;
+    letter-spacing: 6px;
+    margin-bottom: 30px;
+    text-shadow: 0 0 15px #ff0000;
+}
+
+.btn {
+    display: inline-block;
+    margin: 10px;
+    padding: 18px 40px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 3px;
+    transition: 0.2s;
+    border: 2px solid;
+    min-width: 300px;
+    text-align: center;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.main-btn {
+    background: #cc0000;
+    color: #fff;
+    border-color: #ff0000;
+}
+
+.main-btn:hover {
+    background: #ff0000;
+    box-shadow: 0 0 30px #ff0000;
+    transform: scale(1.05);
+}
+
+.zip-btn {
+    background: #8b0000;
+    color: #fff;
+    border-color: #cc0000;
+}
+
+.zip-btn:hover {
+    background: #cc0000;
+    box-shadow: 0 0 30px #cc0000;
+    transform: scale(1.05);
+}
+
+.note {
+    margin-top: 25px;
+    color: #ff8888;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.note code {
+    background: #000;
+    padding: 6px 12px;
+    border: 1px solid #cc0000;
+    color: #00ff00;
+    display: inline-block;
+    margin-top: 8px;
+}
+
+.files {
+    margin-bottom: 60px;
+}
+
+.files h2 {
+    color: #ff0000;
+    font-size: 24px;
+    letter-spacing: 6px;
+    margin-bottom: 25px;
+    text-align: center;
+    text-shadow: 0 0 15px #ff0000;
+}
+
+.files-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+}
+
+.files-grid a {
+    display: block;
+    padding: 12px 16px;
+    background: #1a0000;
+    color: #ff8888;
+    text-decoration: none;
+    border: 1px solid #8b0000;
+    font-size: 13px;
+    transition: 0.2s;
+    text-align: center;
+}
+
+.files-grid a:hover {
+    background: #2a0000;
+    color: #fff;
+    border-color: #ff0000;
+    box-shadow: 0 0 15px #cc0000;
+}
+
+footer {
+    text-align: center;
+    padding: 30px 0;
+    border-top: 2px solid #3a0000;
+    color: #666;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+@media (max-width: 600px) {
+    .ransom-top h3 { font-size: 22px; }
+    .ransom-top img { width: 80px; height: 80px; }
+    .sprite-box { width: 200px; height: 200px; }
+    .btn { min-width: 240px; font-size: 16px; }
+}
+</style>
+</head>
+<body>
+<div class="bg-noise"></div>
+
+<div class="container">
+
+    <header>
+        <h1>RANSOM A-90</h1>
+        <p class="subtitle">YOUR ITEMS HAVE BEEN ENCRYPTED</p>
+    </header>
+
+    <!-- ТОЛЬКО 2 СПРАЙТА -->
+    <section class="preview">
+        <div class="sprite-box idle">
+            <img src="a90_idle.png" alt="A-90 idle">
+            <div class="sprite-label">A-90 IDLE</div>
+        </div>
+        <div class="sprite-box scream">
+            <img src="a90screamer.png" alt="A-90 scream">
+            <div class="sprite-label">A-90 SCREAM</div>
+        </div>
+    </section>
+
+    <!-- ФЕЙКОВОЕ ОКНО RANSOM -->
+    <section class="ransom-window">
+        <div class="ransom-top">
+            <img src="a90_idle.png" alt="A-90">
+            <h3>YOUR ITEMS<br>HAVE BEEN<br>ENCRYPTED</h3>
+        </div>
+        <div class="ransom-warn">
+            IF YOU DO NOT PAY THIS RANSOM BEFORE THE TIMER ENDS,
+            YOUR ITEMS WILL BE <span class="red">UNRECOVERABLE</span> BY ANY MEANS.
+        </div>
+        <div class="ransom-bottom">
+            <div class="gold-box">500 🟡</div>
+            <div class="timer-box">
+                <span>TIME:</span>
+                <span id="timer">01:18</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- СКАЧИВАНИЕ -->
+    <section class="downloads">
+        <h2>СКАЧАТЬ</h2>
+        <a href="Ransom.py" download class="btn main-btn">
+            📄 СКАЧАТЬ Ransom.py
+        </a>
+        <button onclick="downloadZip()" class="btn zip-btn">
+            📦 СКАЧАТЬ ВСЁ (ZIP)
+        </button>
+        <p class="note">
+            Для запуска нужен <b>Python 3.10+</b> и библиотеки:<br>
+            <code>pip install pygame pillow pydub</code>
+        </p>
+    </section>
+
+    <!-- СПИСОК ФАЙЛОВ -->
+    <section class="files">
+        <h2>ФАЙЛЫ ПРОЕКТА</h2>
+        <div class="files-grid">
+            <a href="Ransom.py" download>Ransom.py</a>
+            <a href="a90.mp3" download>a90.mp3</a>
+            <a href="a90scream.mp3" download>a90scream.mp3</a>
+            <a href="a90screamold.mp3" download>a90screamold.mp3</a>
+            <a href="a90minwaregame.mp3" download>a90minwaregame.mp3</a>
+            <a href="glitch.mp3" download>glitch.mp3</a>
+            <a href="crucifix.mp3" download>crucifix.mp3</a>
+            <a href="beep.mp3" download>beep.mp3</a>
+            <a href="sstopsign.png" download>sstopsign.png</a>
+            <a href="a_90crucifix.png" download>a_90crucifix.png</a>
+            <a href="a90_idle.png" download>a90_idle.png</a>
+            <a href="a90screamer.png" download>a90screamer.png</a>
+        </div>
+    </section>
+
+    <footer>
+        © 2026 RANSOM A-90 · THE ARCHIVES
+    </footer>
+
+</div>
+
+<script>
+// ==================== ТАЙМЕР ====================
+let time = 78;
+const timerEl = document.getElementById('timer');
+
+setInterval(() => {
+    if (time <= 0) time = 78;
+    time--;
+    const m = String(Math.floor(time / 60)).padStart(2, '0');
+    const s = String(time % 60).padStart(2, '0');
+    timerEl.textContent = `${m}:${s}`;
+}, 1000);
+
+// ==================== МЕРЦАНИЕ СПРАЙТОВ ====================
+const idleImg = document.querySelector('.sprite-box.idle img');
+const screamImg = document.querySelector('.sprite-box.scream img');
+
+setInterval(() => {
+    if (Math.random() < 0.15) {
+        idleImg.style.opacity = '0.2';
+        setTimeout(() => { idleImg.style.opacity = '1'; }, 150);
+    }
+    if (Math.random() < 0.1) {
+        screamImg.style.opacity = '0.2';
+        setTimeout(() => { screamImg.style.opacity = '1'; }, 120);
+    }
+}, 2000);
+
+// ==================== КЛИК ПО SCREAM ====================
+screamImg.addEventListener('click', () => {
+    document.body.style.background = '#8b0000';
+    setTimeout(() => { document.body.style.background = ''; }, 200);
+});
+
+// ==================== АВТОСБОРКА ZIP ====================
+async function downloadZip() {
+    const btn = event.target;
+    btn.textContent = "📦 СОБИРАЮ...";
+    btn.disabled = true;
+
+    const zip = new JSZip();
+    const files = [
+        "Ransom.py",
+        "a90.mp3", "a90scream.mp3", "a90screamold.mp3",
+        "a90minwaregame.mp3", "glitch.mp3", "crucifix.mp3", "beep.mp3",
+        "a90_idle.png", "sstopsign.png", "a90screamer.png", "a_90crucifix.png"
+    ];
+
+    let loaded = 0;
+    for (const file of files) {
+        try {
+            const resp = await fetch(file);
+            if (!resp.ok) throw new Error("404");
+            const blob = await resp.blob();
+            zip.file(file, blob);
+            loaded++;
+        } catch (e) {
+            console.warn("Не найден:", file);
+        }
+    }
+
+    if (loaded === 0) {
+        alert("Файлы не найдены! Положи их рядом с index.html.");
+        btn.textContent = "📦 СКАЧАТЬ ВСЁ (ZIP)";
+        btn.disabled = false;
+        return;
+    }
+
+    const content = await zip.generateAsync({ type: "blob" });
+    const url = URL.createObjectURL(content);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "Ransom A-90.zip";
+    a.click();
+    URL.revokeObjectURL(url);
+
+    btn.textContent = "✅ ГОТОВО!";
+    setTimeout(() => {
+        btn.textContent = "📦 СКАЧАТЬ ВСЁ (ZIP)";
+        btn.disabled = false;
+    }, 2000);
+}
+</script>
+
+</body>
+</html>
