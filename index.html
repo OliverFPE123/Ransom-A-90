@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>RANSOM A-90 — Скачать</title>
+<title>RANSOM A-90 — Главная</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -48,7 +48,7 @@ header {
     text-align: center;
     padding: 30px 0;
     border-bottom: 2px solid #cc0000;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 h1 {
@@ -80,58 +80,36 @@ h1 {
     letter-spacing: 4px;
 }
 
-/* ВКЛАДКИ */
+/* КНОПКИ-ВКЛАДКИ (открывают окна) */
 .tabs {
     display: flex;
     justify-content: center;
-    gap: 5px;
-    margin-bottom: 40px;
+    gap: 12px;
+    margin-bottom: 50px;
     flex-wrap: wrap;
-    border-bottom: 2px solid #3a0000;
 }
 
 .tab-btn {
     background: #1a0000;
     color: #ff6666;
-    border: 2px solid #3a0000;
-    border-bottom: none;
-    padding: 15px 30px;
+    border: 2px solid #cc0000;
+    padding: 18px 36px;
     font-family: inherit;
-    font-size: 14px;
+    font-size: 15px;
     letter-spacing: 3px;
     cursor: pointer;
     transition: 0.2s;
     font-weight: bold;
+    min-width: 220px;
 }
 
 .tab-btn:hover {
-    background: #2a0000;
-    color: #ffaaaa;
-}
-
-.tab-btn.active {
     background: #cc0000;
     color: #fff;
-    border-color: #ff0000;
-    box-shadow: 0 0 20px #cc0000;
-    transform: translateY(-2px);
+    box-shadow: 0 0 25px #cc0000;
+    transform: translateY(-3px);
 }
 
-.tab-content {
-    display: none;
-    animation: fadeIn 0.3s;
-}
-
-.tab-content.active {
-    display: block;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* ОБЩИЕ СТИЛИ */
 .preview {
     display: flex;
     justify-content: center;
@@ -190,194 +168,6 @@ h1 {
     letter-spacing: 3px;
 }
 
-.ransom-window {
-    max-width: 800px;
-    margin: 0 auto 60px;
-    background: #cc0000;
-    border: 2px solid #ff0000;
-    box-shadow: 0 0 40px #cc0000;
-    animation: windowShake 0.4s infinite;
-}
-
-@keyframes windowShake {
-    0% { transform: translate(0,0); }
-    50% { transform: translate(-1px, 1px); }
-    100% { transform: translate(1px, -1px); }
-}
-
-.ransom-top {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    gap: 20px;
-}
-
-.ransom-top img {
-    width: 120px;
-    height: 120px;
-    object-fit: contain;
-    filter: drop-shadow(0 0 10px #000);
-}
-
-.ransom-top h3 {
-    color: #fff;
-    font-size: 36px;
-    letter-spacing: 2px;
-    line-height: 1.1;
-    text-shadow: 2px 2px 0 #000;
-}
-
-.ransom-warn {
-    background: #000;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-    font-size: 15px;
-    letter-spacing: 1px;
-    line-height: 1.6;
-}
-
-.ransom-warn .red {
-    color: #ff3333;
-    font-weight: bold;
-}
-
-.ransom-bottom {
-    display: flex;
-    padding: 15px 20px;
-    gap: 15px;
-}
-
-.gold-box {
-    background: #ffd700;
-    color: #000;
-    padding: 12px 25px;
-    font-size: 28px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.timer-box {
-    background: #000;
-    color: #fff;
-    padding: 12px 25px;
-    font-size: 28px;
-    font-weight: bold;
-    flex: 1;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.downloads {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.downloads h2 {
-    color: #ff0000;
-    font-size: 28px;
-    letter-spacing: 6px;
-    margin-bottom: 30px;
-    text-shadow: 0 0 15px #ff0000;
-}
-
-.btn {
-    display: inline-block;
-    margin: 10px;
-    padding: 18px 40px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 18px;
-    letter-spacing: 3px;
-    transition: 0.2s;
-    border: 2px solid;
-    min-width: 300px;
-    text-align: center;
-    cursor: pointer;
-    font-family: inherit;
-}
-
-.main-btn {
-    background: #cc0000;
-    color: #fff;
-    border-color: #ff0000;
-}
-
-.main-btn:hover {
-    background: #ff0000;
-    box-shadow: 0 0 30px #ff0000;
-    transform: scale(1.05);
-}
-
-.zip-btn {
-    background: #8b0000;
-    color: #fff;
-    border-color: #cc0000;
-}
-
-.zip-btn:hover {
-    background: #cc0000;
-    box-shadow: 0 0 30px #cc0000;
-    transform: scale(1.05);
-}
-
-.zip-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.note {
-    margin-top: 25px;
-    color: #ff8888;
-    font-size: 14px;
-    line-height: 1.8;
-}
-
-.note code {
-    background: #000;
-    padding: 6px 12px;
-    border: 1px solid #cc0000;
-    color: #00ff00;
-    display: inline-block;
-    margin-top: 8px;
-}
-
-.files-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 12px;
-}
-
-.files-grid a {
-    display: block;
-    padding: 12px 16px;
-    background: #1a0000;
-    color: #ff8888;
-    text-decoration: none;
-    border: 1px solid #8b0000;
-    font-size: 13px;
-    transition: 0.2s;
-    text-align: center;
-}
-
-.files-grid a:hover {
-    background: #2a0000;
-    color: #fff;
-    border-color: #ff0000;
-    box-shadow: 0 0 15px #cc0000;
-}
-
-.status {
-    margin-top: 20px;
-    font-size: 14px;
-    color: #00ff00;
-    min-height: 20px;
-}
-
-/* ОПИСАНИЕ */
 .description {
     background: #1a0000;
     border: 2px solid #3a0000;
@@ -395,30 +185,6 @@ h1 {
     text-shadow: 0 0 15px #ff0000;
 }
 
-.description ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-.description li {
-    padding: 10px 0;
-    border-bottom: 1px solid #3a0000;
-}
-
-.description li::before {
-    content: "▸ ";
-    color: #ff0000;
-    font-weight: bold;
-    margin-right: 10px;
-}
-
-.description code {
-    background: #000;
-    padding: 3px 8px;
-    border: 1px solid #cc0000;
-    color: #00ff00;
-}
-
 footer {
     text-align: center;
     padding: 30px 0;
@@ -430,11 +196,8 @@ footer {
 }
 
 @media (max-width: 600px) {
-    .ransom-top h3 { font-size: 22px; }
-    .ransom-top img { width: 80px; height: 80px; }
     .sprite-box { width: 200px; height: 200px; }
-    .btn { min-width: 240px; font-size: 16px; }
-    .tab-btn { padding: 12px 18px; font-size: 12px; }
+    .tab-btn { min-width: 160px; padding: 14px 20px; font-size: 12px; }
 }
 </style>
 </head>
@@ -448,152 +211,41 @@ footer {
         <p class="subtitle">YOUR ITEMS HAVE BEEN ENCRYPTED</p>
     </header>
 
-    <!-- ВКЛАДКИ -->
+    <!-- ВКЛАДКИ В ОТДЕЛЬНЫХ ОКНАХ -->
     <div class="tabs">
-        <button class="tab-btn active" onclick="showTab('tab-main', this)">
-            🏠 ГЛАВНАЯ
-        </button>
-        <button class="tab-btn" onclick="showTab('tab-ransom', this)">
+        <button class="tab-btn" onclick="openTab('ransom.html', 'RANSOM', 700, 600)">
             💀 RANSOM
         </button>
-        <button class="tab-btn" onclick="showTab('tab-download', this)">
+        <button class="tab-btn" onclick="openTab('download.html', 'СКАЧАТЬ', 800, 700)">
             📦 СКАЧАТЬ
         </button>
-        <button class="tab-btn" onclick="showTab('tab-info', this)">
+        <button class="tab-btn" onclick="openTab('info.html', 'О ВИРУСЕ', 700, 600)">
             ℹ️ О ВИРУСЕ
         </button>
     </div>
 
-    <!-- ВКЛАДКА: ГЛАВНАЯ -->
-    <div id="tab-main" class="tab-content active">
-        <section class="preview">
-            <div class="sprite-box idle">
-                <img src="a90_idle.png" alt="A-90 idle">
-                <div class="sprite-label">A-90 IDLE</div>
-            </div>
-            <div class="sprite-box scream">
-                <img src="a90screamer.png" alt="A-90 scream">
-                <div class="sprite-label">A-90 SCREAM</div>
-            </div>
-        </section>
+    <section class="preview">
+        <div class="sprite-box idle">
+            <img src="a90_idle.png" alt="A-90 idle">
+            <div class="sprite-label">A-90 IDLE</div>
+        </div>
+        <div class="sprite-box scream">
+            <img src="a90screamer.png" alt="A-90 scream">
+            <div class="sprite-label">A-90 SCREAM</div>
+        </div>
+    </section>
 
-        <section class="description">
-            <h2>ДОБРО ПОЖАЛОВАТЬ</h2>
-            <p style="margin-bottom: 20px;">
-                Это вирус-прикол в стиле <b>DOORS: The Archives</b>.
-                Программа имитирует вирус-шифровальщик: скример, DOWNLOADING,
-                окно RANSOM, глюк-окна и фейковый BSOD.
-            </p>
-            <p>
-                Перейди на вкладку <b>«Скачать»</b>, чтобы получить файлы,
-                или на <b>«О вирусе»</b>, чтобы узнать подробнее.
-            </p>
-        </section>
-    </div>
-
-    <!-- ВКЛАДКА: RANSOM -->
-    <div id="tab-ransom" class="tab-content">
-        <section class="ransom-window">
-            <div class="ransom-top">
-                <img src="a90_idle.png" alt="A-90">
-                <h3>YOUR ITEMS<br>HAVE BEEN<br>ENCRYPTED</h3>
-            </div>
-            <div class="ransom-warn">
-                IF YOU DO NOT PAY THIS RANSOM BEFORE THE TIMER ENDS,
-                YOUR ITEMS WILL BE <span class="red">UNRECOVERABLE</span> BY ANY MEANS.
-            </div>
-            <div class="ransom-bottom">
-                <div class="gold-box">500 🟡</div>
-                <div class="timer-box">
-                    <span>TIME:</span>
-                    <span id="timer">01:18</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="description" style="text-align: center;">
-            <h2>ЧТО ДЕЛАТЬ?</h2>
-            <p>
-                Перетаскивай <b>монеты</b> в жёлтый блок с цифрой <b>500</b>.
-                Каждая монета уменьшает долг на <b>100</b>.
-            </p>
-            <p style="margin-top: 15px;">
-                Если найдёшь <b>крест</b> — перетащи его в RANSOM.
-                Тогда A-90 будет распят, и ты спасён.
-            </p>
-        </section>
-    </div>
-
-    <!-- ВКЛАДКА: СКАЧАТЬ -->
-    <div id="tab-download" class="tab-content">
-        <section class="downloads">
-            <h2>СКАЧАТЬ</h2>
-            <a href="Ransom.py" download class="btn main-btn">
-                📄 СКАЧАТЬ Ransom.py
-            </a>
-            <button onclick="downloadZip()" id="zipBtn" class="btn zip-btn">
-                📦 СКАЧАТЬ ВСЁ (ZIP)
-            </button>
-            <p class="note">
-                Для запуска нужен <b>Python 3.10+</b> и библиотеки:<br>
-                <code>pip install pygame pillow pydub</code>
-            </p>
-            <div class="status" id="status"></div>
-        </section>
-
-        <section>
-            <h2 style="color: #ff0000; text-align: center; letter-spacing: 6px; margin-bottom: 25px;">
-                ФАЙЛЫ ПРОЕКТА
-            </h2>
-            <div class="files-grid">
-                <a href="Ransom.py" download>Ransom.py</a>
-                <a href="a90.mp3" download>a90.mp3</a>
-                <a href="a90scream.mp3" download>a90scream.mp3</a>
-                <a href="a90screamold.mp3" download>a90screamold.mp3</a>
-                <a href="a90minwaregame.mp3" download>a90minwaregame.mp3</a>
-                <a href="glitch.mp3" download>glitch.mp3</a>
-                <a href="crucifix.mp3" download>crucifix.mp3</a>
-                <a href="beep.mp3" download>beep.mp3</a>
-                <a href="a90_idle.png" download>a90_idle.png</a>
-                <a href="sstopsign.png" download>sstopsign.png</a>
-                <a href="a90screamer.png" download>a90screamer.png</a>
-                <a href="a_90crucifix.png" download>a_90crucifix.png</a>
-            </div>
-        </section>
-    </div>
-
-    <!-- ВКЛАДКА: О ВИРУСЕ -->
-    <div id="tab-info" class="tab-content">
-        <section class="description">
-            <h2>О ПРОЕКТЕ</h2>
-            <ul>
-                <li><b>Название:</b> RANSOM A-90</li>
-                <li><b>Стиль:</b> DOORS: The Archives (Roblox)</li>
-                <li><b>Язык:</b> Python 3.10+</li>
-                <li><b>Библиотеки:</b> pygame, pillow, pydub</li>
-                <li><b>Тип:</b> Вирус-прикол (не настоящий вирус)</li>
-            </ul>
-
-            <h2 style="margin-top: 30px;">ЧТО ПРОИСХОДИТ</h2>
-            <ul>
-                <li>Скример с пиксельными помехами</li>
-                <li>Экран DOWNLOADING с полосой загрузки</li>
-                <li>Окно RANSOM с таймером 01:18</li>
-                <li>Глюк-окна с тряской</li>
-                <li>Монеты и крест</li>
-                <li>Распятие A-90 (3 фазы)</li>
-                <li>Финальный скример + BSOD</li>
-            </ul>
-
-            <h2 style="margin-top: 30px;">ЗАПУСК</h2>
-            <p>
-                <code>python Ransom.py</code>
-            </p>
-            <p style="margin-top: 15px;">
-                В CMD появится список проверки файлов — все должны быть <b>[OK]</b>.
-            </p>
-        </section>
-    </div>
+    <section class="description">
+        <h2>ДОБРО ПОЖАЛОВАТЬ</h2>
+        <p style="margin-bottom: 20px;">
+            Это вирус-прикол в стиле <b>DOORS: The Archives</b>.
+            Программа имитирует вирус-шифровальщик: скример, DOWNLOADING,
+            окно RANSOM, глюк-окна и фейковый BSOD.
+        </p>
+        <p>
+            Нажми на одну из кнопок выше — откроется отдельное окно с нужным разделом.
+        </p>
+    </section>
 
     <footer>
         © 2026 RANSOM A-90 · THE ARCHIVES
@@ -602,25 +254,16 @@ footer {
 </div>
 
 <script>
-// ==================== ВКЛАДКИ ====================
-function showTab(tabId, btn) {
-    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById(tabId).classList.add('active');
-    btn.classList.add('active');
+// ==================== ОТКРЫТИЕ В ОТДЕЛЬНОМ ОКНЕ ====================
+function openTab(url, title, w, h) {
+    const left = (screen.width - w) / 2;
+    const top = (screen.height - h) / 2;
+    window.open(
+        url,
+        title,
+        `width=${w},height=${h},left=${left},top=${top},resizable=yes,scrollbars=yes`
+    );
 }
-
-// ==================== ТАЙМЕР ====================
-let time = 78;
-const timerEl = document.getElementById('timer');
-
-setInterval(() => {
-    if (time <= 0) time = 78;
-    time--;
-    const m = String(Math.floor(time / 60)).padStart(2, '0');
-    const s = String(time % 60).padStart(2, '0');
-    timerEl.textContent = `${m}:${s}`;
-}, 1000);
 
 // ==================== МЕРЦАНИЕ СПРАЙТОВ ====================
 const idleImg = document.querySelector('.sprite-box.idle img');
@@ -642,88 +285,6 @@ if (screamImg) {
         document.body.style.background = '#8b0000';
         setTimeout(() => { document.body.style.background = ''; }, 200);
     });
-}
-
-// ==================== СПИСОК ВСЕХ ФАЙЛОВ ====================
-const ALL_FILES = [
-    "Ransom.py",
-    "a90.mp3",
-    "a90scream.mp3",
-    "a90screamold.mp3",
-    "a90minwaregame.mp3",
-    "glitch.mp3",
-    "crucifix.mp3",
-    "beep.mp3",
-    "a90_idle.png",
-    "sstopsign.png",
-    "a90screamer.png",
-    "a_90crucifix.png"
-];
-
-// ==================== АВТОСБОРКА ZIP ====================
-async function downloadZip() {
-    const btn = document.getElementById('zipBtn');
-    const status = document.getElementById('status');
-
-    btn.textContent = "📦 СОБИРАЮ...";
-    btn.disabled = true;
-    status.textContent = "Загрузка файлов...";
-    status.style.color = "#ffaa00";
-
-    const zip = new JSZip();
-    let loaded = 0;
-    let missing = [];
-
-    for (const file of ALL_FILES) {
-        try {
-            const resp = await fetch(file);
-            if (!resp.ok) throw new Error("404");
-            const blob = await resp.blob();
-            zip.file(file, blob);
-            loaded++;
-            status.textContent = `Загружено: ${loaded}/${ALL_FILES.length} — ${file}`;
-        } catch (e) {
-            console.warn("Не найден:", file);
-            missing.push(file);
-        }
-    }
-
-    if (loaded === 0) {
-        status.textContent = "❌ Файлы не найдены! Открой сайт через http://localhost, а не file://";
-        status.style.color = "#ff0000";
-        btn.textContent = "📦 СКАЧАТЬ ВСЁ (ZIP)";
-        btn.disabled = false;
-        return;
-    }
-
-    status.textContent = "Создание архива...";
-    status.style.color = "#ffaa00";
-
-    const content = await zip.generateAsync({
-        type: "blob",
-        compression: "DEFLATE",
-        compressionOptions: { level: 6 }
-    });
-
-    const url = URL.createObjectURL(content);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "Ransom A-90.zip";
-    a.click();
-    URL.revokeObjectURL(url);
-
-    if (missing.length > 0) {
-        status.textContent = `✅ Готово! Пропущено: ${missing.join(", ")}`;
-        status.style.color = "#ffaa00";
-    } else {
-        status.textContent = `✅ Готово! Загружено ${loaded} файлов`;
-        status.style.color = "#00ff00";
-    }
-
-    btn.textContent = "📦 СКАЧАТЬ ВСЁ (ZIP)";
-    btn.disabled = false;
-
-    setTimeout(() => { status.textContent = ""; }, 5000);
 }
 </script>
 
